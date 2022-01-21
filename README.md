@@ -93,9 +93,6 @@ Installing these script is pretty straight forward . You can just copy / and pas
 
 **2- Second** run the scripts one after the other
 
-    1- 1-ctr_get_sha_dispositions_from_a_file.py
+    1- 1-ctr_get_observables_dispositions_from_a_file.py
     2- 2-threatgrid_get_sha_submission_from_a_file.py
     3- 3-amp_get_event_for_sha_from_a_file.py
-
- 
-
