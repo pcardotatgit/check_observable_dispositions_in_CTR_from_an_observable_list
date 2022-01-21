@@ -79,8 +79,8 @@ Installing these script is pretty straight forward . You can just copy / and pas
 
 ### clone the scripts
 
-	git clone https://github.com/pcardotatgit/check_sha256_disposition_in_CTR_from_a_sha256_list.git
-	cd check_sha256_disposition_in_CTR_from_a_sha256_list/
+	git clone https://github.com/pcardotatgit/check_observable_dispositions_in_CTR_from_an_observable_list.git
+	cd check_observable_dispositions_in_CTR_from_an_observable_list/
 
 ### Install required modules
 
