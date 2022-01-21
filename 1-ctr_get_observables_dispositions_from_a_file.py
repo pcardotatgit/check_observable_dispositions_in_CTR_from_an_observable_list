@@ -1,11 +1,30 @@
 #!/usr/bin/env python
+'''
+Copyright (c) 2022 Cisco and/or its affiliates.
+
+This software is licensed to you under the terms of the Cisco Sample
+Code License, Version 1.1 (the "License"). You may obtain a copy of the
+License at
+
+               https://developer.cisco.com/docs/licenses
+
+All use of the material herein must be in accordance with the terms of
+the License. All rights not expressly granted by the License are
+reserved. Unless required by applicable law or agreed to separately in
+writing, software distributed under the License is distributed on an "AS
+IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express
+or implied.
+
+What is this :
+This script reads the text file named log.txt located in the same folder, and check the disposition of every SHA256 that it contains
+'''
+
 import requests
 import time
 from datetime import datetime
 import json
 import sys
 from pathlib import Path
-import requests
 from crayons import blue, green, yellow, white, red,cyan
 from requests.packages.urllib3.exceptions import InsecureRequestWarning
 
@@ -110,14 +129,11 @@ def query(observable):
     '''
     response = check_auth(inspect, observable)
     inspect_output = response.text
-    '''
-    inspect_output=[]
-    observable_dict={}
-    observable_dict['value']=observable
-    observable_dict['type']='sha256'
-    inspect_output.append(observable_dict)
-    '''
     print(cyan(inspect_output,bold=True))
+    if response.json()[0]['type']=='sha256':
+        with open('sha256_observables.txt','a+') as file2:
+            file2.write(response.json()[0]['value'])
+            file2.write('\n')
     #inspect_output = observable
     response = check_auth(enrich, inspect_output)
     return response
@@ -125,20 +141,21 @@ def query(observable):
 
 def go():
     line_content = []
-    with open('SHA256.txt') as inputfile:
+    # here under let's open the file to analyse
+    with open('logs.txt') as inputfile:  # modify this part if you prefer to read the source file to analyse from another location
         for line in inputfile:
-            if line[0] == "#" or line.strip() == "Site":
+            if line[0] == "#" or line.strip() == "something to skip":
                 pass
             else:
                 ligne=line.strip()
-                ligne=ligne.split('":"')[1]
-                ligne=ligne.replace('"}}','')
+                #ligne=ligne.split('":"')[1]
+                #ligne=ligne.replace('"}}','')
                 line_content.append(ligne)            
             # loop through all content
-        with open('resultat.txt','w') as file:
-            for sha256 in line_content:
-                print (sha256)
-                response = query(sha256)
+        with open('result.txt','w') as file:
+            for observable in line_content:
+                print (observable)
+                response = query(observable)
                 response_json = response.json()
                 
                 print(response_json)
@@ -160,9 +177,11 @@ def go():
                             file.write('\n')
                     else:
                         print(green('Good News : No Verdict for this one',bold=True))
-                        ligne_out='{};No Verdict;Good News;'.format(sha256)                        
+                        ligne_out='{};No Verdict;Good News;'.format(observable)                        
                         file.write(ligne_out)
                         file.write('\n')
         
 if __name__ == "__main__":
+    file=open('sha256_observables.txt','w')
+    file.close()
     go()

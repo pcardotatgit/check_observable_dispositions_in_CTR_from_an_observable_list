@@ -1,0 +1,5 @@
+any string before the observable ....:"50.60.57.20"... and any string after the observable. The line must contain one observable to check
+any string before the observable ....:"internetbadguy.com"... and any string after the observable. The line must contain one observable to check
+any string before the observable ....:"5.188.206.150"... and any string after the observable. The line must contain one observable to check
+any string before the observable ....:"3372c1edab46837f1e973164fa2d726c5c5e17bcb888828ccd7c4dfcc234a370"... and any string after the observable. The line must contain one observable to check
+any string before the observable ....:"https://catatonic-judge.000webhostapp.com/"... and any string after the observable. The line must contain one observable to check

@@ -4,11 +4,17 @@ Imagine that you have a Security Log file in your hand ( even very big ), collec
 
 And now your question is :  Is there a malicious activity captured in this log file ?
 
-The python script named **1-ctr_get_sha_dispositions_from_a_file.py**  reads the text file named **SH256.txt** located in the same folder, and check the disposition of every SHA256 that it contains.
+Is you are in this situation then these script are for you !
 
-This text file must contains several lines one after the other and must contain one or more observable per line.  The line can contain strings before and after the observables to check.
+We assume that you have at least an active SecureX tenant.  And in addition to this you have as well an Cisco Secure EndPoint Environment ( AMP for Endpoint ). Plus a Cisco Secure Malware ( ThreatGrid ) subscription ( These two last one are not mandatory ).
 
-example :
+What it is about...
+
+The python script named **1-ctr_get_observables_dispositions_from_a_file.py**  reads the text file named **logs.txt** located in the same folder, and check the disposition of every observables that it contains.
+
+This text file must contains several lines one after the other. And we expect to have observables in every lines, but it doesn't matter. We can have one or more observable per line ( or 0 ).  The lines can contain strings before and after the observables to check. We leverage the Threat Response inspect API in order to extract observables and their values from the line.
+
+Example of a log file :
 
 ```
 any string before the observable ....:"50.60.57.20"... and any string after the sha. The line must contain one observable to check
@@ -36,10 +42,11 @@ Example :
 any string before the observable ....:"https://catatonic-judge.000webhostapp.com/"... and any string after the sha. The line must contain one observable to check;No Verdict;Good News
 ```
 
-All that means is that you can copy and paste into the **SHA256.txt** file, the whole content of any log file, from any security sensors as far the log are a readable text , and then you will be able to identify all malicious observable that it contains. The log file can be large. The script had been tested with logs that contains 10 000 observables.
-It takes 2h30 to check 10 000 observables.
+All that means is that you can copy and paste into the **logs.txt** file, the whole content of any log file, from any security sensors as far the log are a readable text , and then you will be able to identify all malicious observable that it contains. 
 
-Don't hesitate to modify the code in order to directly read to log file you want to analyse. 
+**Remark :** The log file can be large. The script had been tested with logs that contains 10 000 observables. It takes 2h30 to check 10 000 observables. And as I don't manage the ThreatResponse Request Rate limit limitation... I had to restart the script 2 times for 10 000 observables.  In one run the script handle 3900 observables for one hour.
+
+Don't hesitate to modify the code in order to directly read to log file you want to analyse from any location !
 
 At the same time the script create a file named **sha256_observables.txt** that will contain only sha256s.
 
