@@ -1,4 +1,8 @@
-# check sha256 disposition in CTR from a sha256 list
+# check Observables dispositions in CTR from an observable list
+
+Imagine that you have a Security Log file in your hand ( even very big ), collected from any security solution. And this file is a text file that contain any kind of activities that involved objects you want to monitor. Targets, Attackers... domains, mac adresses, IP addresses, URL, sha256... 
+
+And now your question is :  Is there a malicious activity captured in this log file ?
 
 The python script named **1-ctr_get_sha_dispositions_from_a_file.py**  reads the text file named **SH256.txt** located in the same folder, and check the disposition of every SHA256 that it contains.
 
