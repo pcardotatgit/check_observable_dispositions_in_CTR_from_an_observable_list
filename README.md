@@ -2,9 +2,9 @@
 
 Imagine that you have a Security Log file in your hand ( even very big ), collected from any security solution. And this file is a text file that contain any kind of activities that involved objects you want to monitor. Targets, Attackers... domains, mac adresses, IP addresses, URL, sha256... 
 
-And now your question is :  Is there a malicious activity captured in this log file ?
+And now your question is :  Is there any malicious activities captured in this log file ?
 
-Is you are in this situation then these script are for you !
+If you are in this situation then these script are for you !
 
 We assume that you have at least an active SecureX tenant.  And in addition to this you have as well an Cisco Secure EndPoint Environment ( AMP for Endpoint ). Plus a Cisco Secure Malware ( ThreatGrid ) subscription ( These two last one are not mandatory ).
 
