@@ -24,7 +24,7 @@ any string before the observable ....:"3372c1edab46837f1e973164fa2d726c5c5e17bcb
 any string before the observable ....:"https://catatonic-judge.000webhostapp.com/"... and any string after the sha. The line must contain one observable to check
 ```
 
-Every observables will be extracted from the line and a disposition query will be send to SecureX Threat Response in order to identify if any Integrated Modules knows them. And if Yes what are their dispositions ( Malicious, Suspicious or something else )
+Every observables will be extracted from the line and a disposition query will be send to SecureX Threat Response in order to identify if any Integrated Modules knows them. And if Yes... then what are their dispositions ( Malicious, Suspicious or something else ) ?
 
 A resulting file named **result.txt** is created with the results of the queries :
 
